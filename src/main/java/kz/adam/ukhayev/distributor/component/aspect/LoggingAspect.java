@@ -12,10 +12,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class LoggingAspect {
 
-    @Around("execution(* kz.adam.ukhayev.distributor.service.impl.UserServiceImpl+.*(..))")
-    public Object aroundReturnUserServiceAdvice(ProceedingJoinPoint joinPoint)
+    @Around("execution(* kz.adam.ukhayev.distributor.controller.UserApiHandlerController+.*(..))")
+    public Object aroundReturnUserControllerAdvice(ProceedingJoinPoint joinPoint)
             throws Throwable {
-        log.info(joinPoint.getSignature().getName() + Arrays.toString(joinPoint.getArgs()));
+        log.info("UserApiHandlerController." + joinPoint.getSignature().getName() + Arrays
+                .toString(joinPoint.getArgs()));
         Object result = null;
         try {
             result = joinPoint.proceed();
@@ -25,29 +26,73 @@ public class LoggingAspect {
         return result;
     }
 
-//    @Around("execution(* kz.adam.ukhayev.distributor.service.impl.MediaApiServiceImpl+.*(..))")
-//    public Object aroundReturnMediaApiServiceAdvice(ProceedingJoinPoint joinPoint)
-//            throws Throwable {
-//        log.info(joinPoint.getSignature().getName() + Arrays.toString(joinPoint.getArgs()));
-//        Object result = null;
-//        try {
-//            result = joinPoint.proceed();
-//        } catch (Exception e) {
-//            log.error(e.getMessage());
-//        }
-//        return  result;
-//    }
-//
-//    @Around("execution(* kz.adam.ukhayev.distributor.service.impl.MessengerApiService+.*(..))")
-//    public Object aroundReturnMessengerApiServiceAdvice(ProceedingJoinPoint joinPoint)
-//            throws Throwable {
-//        log.info(joinPoint.getSignature().getName() + Arrays.toString(joinPoint.getArgs()));
-//        Object result = null;
-//        try {
-//            result = joinPoint.proceed();
-//        } catch (Exception e) {
-//            log.error(e.getMessage());
-//        }
-//        return  result;
-//    }
+    @Around("execution(* kz.adam.ukhayev.distributor.controller.MediaApiController+.*(..))")
+    public Object aroundReturnMediaControllerAdvice(ProceedingJoinPoint joinPoint)
+            throws Throwable {
+        log.info("MediaApiController." + joinPoint.getSignature().getName() + Arrays
+                .toString(joinPoint.getArgs()));
+        Object result = null;
+        try {
+            result = joinPoint.proceed();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+        return result;
+    }
+
+    @Around("execution(* kz.adam.ukhayev.distributor.controller.MessengerApiController+.*(..))")
+    public Object aroundReturnMessageControllerAdvice(ProceedingJoinPoint joinPoint)
+            throws Throwable {
+        log.info("MessengerApiController." + joinPoint.getSignature().getName() + Arrays
+                .toString(joinPoint.getArgs()));
+        Object result = null;
+        try {
+            result = joinPoint.proceed();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+        return result;
+    }
+
+    @Around("execution(* kz.adam.ukhayev.distributor.service.impl.UserServiceImpl+.*(..))")
+    public Object aroundReturnUserServiceAdvice(ProceedingJoinPoint joinPoint)
+            throws Throwable {
+        log.info("UserServiceImpl: " + joinPoint.getSignature().getName() + Arrays
+                .toString(joinPoint.getArgs()));
+        Object result = null;
+        try {
+            result = joinPoint.proceed();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+        return result;
+    }
+
+    @Around("execution(* kz.adam.ukhayev.distributor.service.impl.MediaApiServiceImpl+.*(..))")
+    public Object aroundReturnMediaServiceAdvice(ProceedingJoinPoint joinPoint)
+            throws Throwable {
+        log.info("MediaServiceImpl." + joinPoint.getSignature().getName() + Arrays
+                .toString(joinPoint.getArgs()));
+        Object result = null;
+        try {
+            result = joinPoint.proceed();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+        return result;
+    }
+
+    @Around("execution(* kz.adam.ukhayev.distributor.service.impl.MessengerApiServiceImpl+.*(..))")
+    public Object aroundReturnMessageServiceAdvice(ProceedingJoinPoint joinPoint)
+            throws Throwable {
+        log.info("MessengerServiceImpl." + joinPoint.getSignature().getName() + Arrays
+                .toString(joinPoint.getArgs()));
+        Object result = null;
+        try {
+            result = joinPoint.proceed();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+        return result;
+    }
 }
