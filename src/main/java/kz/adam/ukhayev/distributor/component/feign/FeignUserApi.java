@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(
-        value = "users-api",
-        url = "${feign.url.user-api}"
+    value = "users-api",
+    url = "${feign.url.user-api}",
+    configuration = FeignConfiguration.class
 )
 public interface FeignUserApi {
 

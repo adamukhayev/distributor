@@ -18,6 +18,10 @@ repositories {
 	mavenCentral()
 }
 
+ext {
+	springCloudVersion = '2021.0.1'
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
@@ -39,6 +43,12 @@ dependencies {
 	implementation 'org.webjars:bootstrap:3.3.7'
 	implementation 'org.webjars:jquery:3.1.1-1'
 	implementation group: 'org.json', name: 'json', version: '20220320'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
 
 tasks.named('test') {
